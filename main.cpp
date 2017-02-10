@@ -5,6 +5,7 @@
 #include <iostream>
 #include <iomanip>
 #include <vector>
+#include <random>
 #include <cstdlib>
 #include <ctime>
 using namespace std;
@@ -13,6 +14,7 @@ using namespace std;
 
 #include "algo\rank.cpp"
 #include "algo\berlekamp_massey.cpp"
+#include "algo\dfft.cpp"
 
 #include "test\monobit_frequency_test.cpp"
 #include "test\frequency_test_within_a_block.cpp"
@@ -28,12 +30,16 @@ using namespace std;
 #include "test\approximate_entropy_test.cpp"
 #include "test\linear_complexity_test.cpp"
 #include "test\Maurers_universal_test.cpp"
+#include "test\Discrete_Fourier_Transform_test.cpp"
+
+default_random_engine generator(time(NULL));
+uniform_int_distribution<int> distribution(0, 1);
 
 vector<bool> v;
 int main(){
     srand(time(NULL));
     for (int i=0;i<1000000;i++){
-        v.push_back(rand()&1);
+        v.push_back(distribution(generator));
     }
     test::monobit_frequency_test(v);
     test::frequency_test_within_a_block(v, 100);
@@ -58,6 +64,7 @@ int main(){
     test::approximate_entropy_test(v, 5);
     test::linear_complexity_test(v, 500);
     test::Maurers_universal_test(v, 7, 1280);
+    test::Discrete_Fourier_Transform_test(v);
     return 0;
 }
 
