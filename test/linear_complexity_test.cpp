@@ -11,16 +11,16 @@ namespace test{
         int N = n/m;
         int n_disc = n%m;
 
-        double v[7]={};
-        static const double pi[7]={0.010417, 0.03125, 0.12500, 0.5000, 0.25000, 0.06250, 0.020833};
-        double V=0;
+        double v[7]={0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+        const double pi[7]={0.010417, 0.03125, 0.12500, 0.5000, 0.25000, 0.06250, 0.020833};
+        double V=0.0;
         double P;
 
         bool* arr;
         int complexity;
         double T, miu;
         arr = new bool[m];
-        miu=m/2.0+(9.0+((m+1)%2==0?1.0:-1.0))/36.0-(m/3.0+2.0/9.0)/pow(2.0, m);
+        miu=m/2.0+(9.0+(m%2==0?1.0:-1.0))/36.0-(m/3.0+2.0/9.0)/pow(2.0, m);
         vector<bool>::const_iterator it=bits.begin();
         for (int i=0; i<N; i++){
             for (int j=0; j<m; j++){
@@ -39,9 +39,10 @@ namespace test{
         }
 
         for (int i=0; i<7; i++){
-            V+=(v[i]-N*pi[i])*(v[i]-N*pi[i])/(N*pi[i]);
+            printf("v[%d]=%f\n", i, v[i]);
+            V+=pow(v[i]-N*pi[i], 2.0)/(N*pi[i]);
         }
-        P=igamc(3, V/2.0);
+        P=igamc(3.0, V/2.0);
 
         cout<<"Linear complexity test:"<<endl;
         cout<<"    n   = "<<n<<endl;

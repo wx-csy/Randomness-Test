@@ -1,7 +1,7 @@
 namespace test{
 
     double serial_test_P2;
-    double serial_test(vector<bool> &bits, int m){
+    double serial_test(vector<bool> &bits, unsigned int m){
         if (bits.size()==0 || m<2 || m>30){
             cerr<<"Illegal parameter!"<<endl;
             throw;
@@ -41,13 +41,13 @@ namespace test{
         }
 
         for (int i=0; i<=mask1; i++)
-            Phi1+=patterns1[i]*patterns1[i];
+            Phi1+=pow(patterns1[i],2.0);
         Phi1*=(mask1+1); Phi1/=n; Phi1-=n;
         for (int i=0; i<=mask2; i++)
-            Phi2+=patterns2[i]*patterns2[i];
+            Phi2+=pow(patterns2[i],2.0);
         Phi2*=(mask2+1); Phi2/=n; Phi2-=n;
         for (int i=0; i<=mask3; i++)
-            Phi3+=patterns3[i]*patterns3[i];
+            Phi3+=pow(patterns3[i],2.0);
         Phi3*=(mask3+1); Phi3/=n; Phi3-=n;
 
         DPhi2=Phi1-Phi2;
@@ -63,6 +63,9 @@ namespace test{
         cout<<"Serial test:"<<endl;
         cout<<"    n   = "<<n<<endl;
         cout<<"    m   = "<<m<<endl;
+        cout<<"  Phi1  = "<<fixed<<setprecision(6)<<Phi1<<endl;
+        cout<<"  Phi2  = "<<fixed<<setprecision(6)<<Phi2<<endl;
+        cout<<"  Phi3  = "<<fixed<<setprecision(6)<<Phi3<<endl;
         cout<<"  DPhi2 = "<<fixed<<setprecision(6)<<DPhi2<<endl;
         cout<<" D2Phi2 = "<<fixed<<setprecision(6)<<D2Phi2<<endl;
         cout<<"    P1  = "<<fixed<<setprecision(4)<<P1*100<<"%"<<endl;

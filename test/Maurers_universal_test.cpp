@@ -7,7 +7,7 @@ namespace test{
         }
 
         int* T = new int[1<<L];
-        int mask = 1<<L-1;
+        int mask = (1<<L)-1;
         int n = bits.size();
         int K = n/L-Q;
         int n_disc = n%L;
