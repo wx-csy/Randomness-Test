@@ -32,7 +32,7 @@ using namespace std;
 #include "test\Maurers_universal_test.cpp"
 #include "test\Discrete_Fourier_Transform_test.cpp"
 
-ranlux24 generator(time(NULL));
+default_random_engine generator(time(NULL));
 uniform_int_distribution<int> distribution(0, 1);
 
 vector<bool> v;

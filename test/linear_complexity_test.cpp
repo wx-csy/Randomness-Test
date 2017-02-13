@@ -27,7 +27,8 @@ namespace test{
                 arr[j]=*it;
                 it++;
             }
-            complexity = algo::berlekamp_massey(arr, m);
+            // call linear_complexity instead of berlekamp_massey
+            complexity = algo::linear_complexity(arr, m);
             T=(m%2==0?1.0:-1.0)*(complexity-miu)+2.0/9.0;
             if (T<=-2.5) v[0]++;
             else if(T<=-1.5) v[1]++;
@@ -39,7 +40,7 @@ namespace test{
         }
 
         for (int i=0; i<7; i++){
-            printf("v[%d]=%f\n", i, v[i]);
+            // printf("v[%d]=%f\n", i, v[i]);
             V+=pow(v[i]-N*pi[i], 2.0)/(N*pi[i]);
         }
         P=igamc(3.0, V/2.0);

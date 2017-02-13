@@ -32,6 +32,7 @@ namespace algo{
         return tmp;
     }
 
+    // there's something wrong with this procedure
     int berlekamp_massey(const bool* a, unsigned int n) {
         int* l;
         bool** f;
@@ -65,6 +66,56 @@ namespace algo{
         m=l[n-1];
         delete[] l;
         return m;
+    }
+
+    int b2i(bool b){
+        return b?1:0;
+    }
+
+    int linear_complexity(const bool* a, unsigned int M){
+        int N_=0, L=0, m=-1, d=0;
+        int *B_, *C, *P, *T;
+        B_ = new int[M];
+        C = new int[M];
+        P = new int[M];
+        T = new int[M];
+        for (int i=0; i<M; i++ ) {
+			B_[i] = 0;
+			C[i] = 0;
+			T[i] = 0;
+			P[i] = 0;
+		}
+        C[0] = 1;
+        B_[0] = 1;
+		while ( N_ < M ) {
+			d = b2i(a[N_]);
+			for (int i=1; i<=L; i++ )
+				d += C[i] * b2i(a[N_-i]);
+			d = d%2;
+			if ( d == 1 ) {
+				for (int i=0; i<M; i++ ) {
+					T[i] = C[i];
+					P[i] = 0;
+				}
+				for (int j=0; j<M; j++ )
+					if ( B_[j] == 1 )
+						P[j+N_-m] = 1;
+				for (int i=0; i<M; i++ )
+					C[i] = (C[i] + P[i])%2;
+				if ( L <= N_/2 ) {
+					L = N_ + 1 - L;
+					m = N_;
+					for (int i=0; i<M; i++ )
+						B_[i] = T[i];
+				}
+			}
+			N_++;
+		}
+        delete[] B_;
+        delete[] C;
+        delete[] P;
+        delete[] T;
+        return L;
     }
 
 }
