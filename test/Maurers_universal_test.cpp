@@ -1,5 +1,13 @@
 namespace test{
 
+    double Mut_factor_C(int L, int K){
+        double v;
+        v=0.7;
+        v-=0.8/L;
+        v+=(4.0+32.0/L)*(pow(K,-3.0/L)/15.0);
+        return v;
+    }
+
     double Maurers_universal_test(const vector<bool> &bits, unsigned int L, unsigned int Q){
         if (bits.size()==0 || L<=5 || L>16 || bits.size()<L*(Q+1)){
             cerr<<"Illegal parameter!"<<endl;
@@ -14,6 +22,7 @@ namespace test{
         double sum=0.0;
         double V=0;
         double P;
+        double sigma;
         const double expected_value[17] = { 0, 0, 0, 0, 0, 0, 5.2177052, 6.1962507, 7.1836656,
 				8.1764248, 9.1723243, 10.170032, 11.168765,
 				12.168070, 13.167693, 14.167488, 15.167379 };
@@ -42,7 +51,8 @@ namespace test{
             T[tmp&mask]=i;
         }
 
-        V=(sum/K-expected_value[L])/variance[L];
+        sigma=sqrt(variance[L]/K)*Mut_factor_C(L,K);
+        V=(sum/K-expected_value[L])/sigma;
         P=erfc(fabs(V)/sqrt(2.0));
 
         cout<<"Maurer's universal test:"<<endl;
