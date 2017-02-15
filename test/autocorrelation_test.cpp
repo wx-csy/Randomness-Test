@@ -34,7 +34,7 @@ namespace test{
         }
 
         const char* testName(int lang = 0){
-            char* names[1] = {"autocorrelation test"};
+            char* names[1] = {"Autocorrelation test"};
             return names[lang];
         }
 

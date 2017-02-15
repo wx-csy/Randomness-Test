@@ -46,7 +46,7 @@ namespace test{
         }
 
         const char* testName(int lang = 0){
-            char* names[1] = {"frequency test within a block"};
+            char* names[1] = {"Frequency test within a block"};
             return names[lang];
         }
 

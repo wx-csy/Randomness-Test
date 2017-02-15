@@ -59,7 +59,7 @@ namespace test{
         }
 
         const char* testName(int lang = 0){
-            char* names[1] = {"runs distribution test"};
+            char* names[1] = {"Runs distribution test"};
             return names[lang];
         }
 

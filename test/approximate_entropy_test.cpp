@@ -106,7 +106,7 @@ namespace test{
         }
 
         const char* testName(int lang = 0){
-            char* names[1] = {"approximate entropy test"};
+            char* names[1] = {"Approximate entropy test"};
             return names[lang];
         }
 

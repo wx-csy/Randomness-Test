@@ -47,10 +47,6 @@ int main(int argc, char* argv[]){
             v.push_back(distribution(generator));
         }
 
-        testSuit::initDefaultTests();
-        testSuit::runTest(v);
-
-        return 0;
 
     } else {
         fstream f(argv[1]);
@@ -65,30 +61,9 @@ int main(int argc, char* argv[]){
         }
     }
 
-    test::monobit_frequency_test(v);
-    test::frequency_test_within_a_block(v, 100);
-    test::poker_test(v, 4);
-    test::poker_test(v, 8);
-    test::serial_test(v, 2);
-    test::serial_test2(v);
-    test::serial_test(v, 5);
-    test::serial_test2(v);
-    test::runs_test(v);
-    test::runs_distribution_test(v);
-    test::test_for_the_longest_run_of_ones_in_a_block(v, 10000);
-    test::binary_derivative_test(v, 3);
-    test::binary_derivative_test(v, 7);
-    test::autocorrelation_test(v, 1);
-    test::autocorrelation_test(v, 2);
-    test::autocorrelation_test(v, 8);
-    test::autocorrelation_test(v, 16);
-    test::binary_matrix_rank_test(v, 32, 32);
-    test::cumulative_test(v);
-    test::approximate_entropy_test(v, 2);
-    test::approximate_entropy_test(v, 5);
-    test::linear_complexity_test(v, 500);
-    test::Maurers_universal_test(v, 7, 1280);
-    test::Discrete_Fourier_Transform_test(v);
+    testSuit::initDefaultTests();
+    testSuit::runTest(v);
+
     return 0;
 }
 

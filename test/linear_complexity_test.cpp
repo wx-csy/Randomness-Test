@@ -65,7 +65,7 @@ namespace test{
         }
 
         const char* testName(int lang = 0){
-            char* names[1] = {"linear complexity test"};
+            char* names[1] = {"Linear complexity test"};
             return names[lang];
         }
 

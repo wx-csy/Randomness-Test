@@ -93,7 +93,7 @@ namespace test{
         }
 
         const char* testName(int lang = 0){
-            char* names[1] = {"serial test (1)"};
+            char* names[1] = {"Serial test (1)"};
             return names[lang];
         }
 
@@ -111,7 +111,7 @@ namespace test{
         }
 
         const char* testName(int lang = 0){
-            char* names[1] = {"serial test (2)"};
+            char* names[1] = {"Serial test (2)"};
             return names[lang];
         }
 

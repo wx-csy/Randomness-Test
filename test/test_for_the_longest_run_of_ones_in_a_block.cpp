@@ -59,7 +59,7 @@ namespace test{
         }
 
         const char* testName(int lang = 0){
-            char* names[1] = {"test for the longest run of ones in a block"};
+            char* names[1] = {"Test for the longest run of ones in a block"};
             return names[lang];
         }
 

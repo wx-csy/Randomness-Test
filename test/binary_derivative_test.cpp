@@ -40,7 +40,7 @@ namespace test{
         }
 
         const char* testName(int lang = 0){
-            char* names[1] = {"binary derivative test"};
+            char* names[1] = {"Binary derivative test"};
             return names[lang];
         }
 

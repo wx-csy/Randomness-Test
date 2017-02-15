@@ -36,7 +36,7 @@ namespace test{
         }
 
         const char* testName(int lang = 0){
-            char* names[1] = {"cumulative test"};
+            char* names[1] = {"Cumulative test"};
             return names[lang];
         }
 

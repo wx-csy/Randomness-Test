@@ -29,7 +29,7 @@ namespace test{
         }
 
         const char* testName(int lang = 0){
-            char* names[1] = {"monobit frequency test"};
+            char* names[1] = {"Monobit frequency test"};
             return names[lang];
         }
 
