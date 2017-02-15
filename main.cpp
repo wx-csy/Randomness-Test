@@ -34,6 +34,8 @@ using namespace std;
 #include "test\Maurers_universal_test.cpp"
 #include "test\Discrete_Fourier_Transform_test.cpp"
 
+#include "testsuit.cpp"
+
 default_random_engine generator(time(NULL));
 uniform_int_distribution<int> distribution(0, 1);
 
@@ -45,18 +47,8 @@ int main(int argc, char* argv[]){
             v.push_back(distribution(generator));
         }
 
-        test::TestMethod* M = new test::SerialTest(5);
-
-        M->run(v);
-        cout<<M->testName()<<endl;
-        cout<<M->P<<endl;
-        cout<<M->result()<<endl;
-
-        M = new test::SerialTest2(5);
-        M->run(v);
-        cout<<M->testName()<<endl;
-        cout<<M->P<<endl;
-        cout<<M->result()<<endl;
+        testSuit::initDefaultTests();
+        testSuit::runTest(v);
 
         return 0;
 
