@@ -3,6 +3,7 @@
 #include <cstring>
 #include <algorithm>
 #include <iostream>
+#include <fstream>
 #include <iomanip>
 #include <vector>
 #include <random>
@@ -16,6 +17,7 @@ using namespace std;
 #include "algo\berlekamp_massey.cpp"
 #include "algo\dfft.cpp"
 
+#include "test\test.cpp"
 #include "test\monobit_frequency_test.cpp"
 #include "test\frequency_test_within_a_block.cpp"
 #include "test\poker_test.cpp"
@@ -36,11 +38,41 @@ default_random_engine generator(time(NULL));
 uniform_int_distribution<int> distribution(0, 1);
 
 vector<bool> v;
-int main(){
-    srand(time(NULL));
-    for (int i=0;i<1000000;i++){
-        v.push_back(distribution(generator));
+int main(int argc, char* argv[]){
+    if (argc<=1){
+        srand(time(NULL));
+        for (int i=0;i<1000000;i++){
+            v.push_back(distribution(generator));
+        }
+
+        test::TestMethod* M = new test::SerialTest(5);
+
+        M->run(v);
+        cout<<M->testName()<<endl;
+        cout<<M->P<<endl;
+        cout<<M->result()<<endl;
+
+        M = new test::SerialTest2(5);
+        M->run(v);
+        cout<<M->testName()<<endl;
+        cout<<M->P<<endl;
+        cout<<M->result()<<endl;
+
+        return 0;
+
+    } else {
+        fstream f(argv[1]);
+        char c;
+        while (f>>c){
+            if (c=='0') v.push_back(false);
+            else if(c=='1') v.push_back(true);
+            else {
+                cout<< "Invalid character!"<<endl;
+                return 0;
+            }
+        }
     }
+
     test::monobit_frequency_test(v);
     test::frequency_test_within_a_block(v, 100);
     test::poker_test(v, 4);

@@ -57,4 +57,19 @@ namespace test{
         return P;
     }
 
+    class LinearComplexityTest: public TestMethod{
+    public:
+        unsigned int m;
+        void run(std::vector<bool> &bits){
+            P = linear_complexity_test(bits, m);
+        }
+
+        const char* testName(int lang = 0){
+            char* names[1] = {"linear complexity test"};
+            return names[lang];
+        }
+
+        LinearComplexityTest(unsigned int _m) {m=_m;}
+        ~LinearComplexityTest() {}
+    };
 }

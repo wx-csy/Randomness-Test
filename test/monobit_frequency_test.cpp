@@ -22,4 +22,18 @@ namespace test{
         return P;
     }
 
+    class MonobitFrequencyTest: public TestMethod{
+    public:
+        void run(std::vector<bool> &bits){
+            P = monobit_frequency_test(bits);
+        }
+
+        const char* testName(int lang = 0){
+            char* names[1] = {"monobit frequency test"};
+            return names[lang];
+        }
+
+        MonobitFrequencyTest() {}
+        ~MonobitFrequencyTest() {}
+    };
 }

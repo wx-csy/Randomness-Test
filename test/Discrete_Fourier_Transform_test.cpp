@@ -51,4 +51,18 @@ namespace test{
 
     }
 
+    class DiscreteFourierTransformTest: public TestMethod{
+    public:
+        void run(std::vector<bool> &bits){
+            P = Discrete_Fourier_Transform_test(bits);
+        }
+
+        const char* testName(int lang = 0){
+            char* names[1] = {"Discrete Fourier Transform test"};
+            return names[lang];
+        }
+
+        DiscreteFourierTransformTest() {}
+        ~DiscreteFourierTransformTest() {}
+    };
 }

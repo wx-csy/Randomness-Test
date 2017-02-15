@@ -52,4 +52,18 @@ namespace test{
         return P;
     }
 
+    class RunsDistributionTest: public TestMethod{
+    public:
+        void run(std::vector<bool> &bits){
+            P = runs_distribution_test(bits);
+        }
+
+        const char* testName(int lang = 0){
+            char* names[1] = {"runs distribution test"};
+            return names[lang];
+        }
+
+        RunsDistributionTest() {}
+        ~RunsDistributionTest() {}
+    };
 }

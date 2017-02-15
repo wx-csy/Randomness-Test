@@ -1,7 +1,7 @@
 namespace test{
 
     //  仅实现了 M=10000 时的情况
-    double test_for_the_longest_run_of_ones_in_a_block(const vector<bool> &bits, int m){
+    double test_for_the_longest_run_of_ones_in_a_block(const vector<bool> &bits, unsigned int m){
         if (bits.size()==0 || m!=10000 || bits.size()<m){
             cerr<<"Illegal parameter!"<<endl;
             throw;
@@ -50,4 +50,20 @@ namespace test{
         return P;
     }
 
+    class TestForTheLongestRunOfOnesInABolock: public TestMethod{
+    public:
+        unsigned int m;
+
+        void run(std::vector<bool> &bits){
+            P = test_for_the_longest_run_of_ones_in_a_block(bits, m);
+        }
+
+        const char* testName(int lang = 0){
+            char* names[1] = {"test for the longest run of ones in a block"};
+            return names[lang];
+        }
+
+        TestForTheLongestRunOfOnesInABolock(unsigned int _m) {m=_m;}
+        ~TestForTheLongestRunOfOnesInABolock() {}
+    };
 }

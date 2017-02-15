@@ -37,4 +37,21 @@ namespace test{
         return P;
     }
 
+    class FrequencyTestWithinABlock: public TestMethod{
+    public:
+        int m;
+
+        void run(std::vector<bool> &bits){
+            P = frequency_test_within_a_block(bits, m);
+        }
+
+        const char* testName(int lang = 0){
+            char* names[1] = {"frequency test within a block"};
+            return names[lang];
+        }
+
+        FrequencyTestWithinABlock(int _m) {m = _m;}
+        ~FrequencyTestWithinABlock() {}
+    };
+
 }

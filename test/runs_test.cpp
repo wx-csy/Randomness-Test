@@ -28,4 +28,21 @@ namespace test{
         return P;
     }
 
+    class RunsTest: public TestMethod{
+    public:
+        int m;
+
+        void run(std::vector<bool> &bits){
+            P = runs_test(bits);
+        }
+
+        const char* testName(int lang = 0){
+            char* names[1] = {"runs test"};
+            return names[lang];
+        }
+
+        RunsTest() {}
+        ~RunsTest() {}
+    };
+
 }

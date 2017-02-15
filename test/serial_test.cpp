@@ -82,4 +82,40 @@ namespace test{
     double serial_test2(const vector<bool> &bits){
         return serial_test_P2;
     }
+
+
+    class SerialTest: public TestMethod{
+    public:
+        int m;
+
+        void run(std::vector<bool> &bits){
+            P = serial_test(bits, m);
+        }
+
+        const char* testName(int lang = 0){
+            char* names[1] = {"serial test (1)"};
+            return names[lang];
+        }
+
+        SerialTest(int _m) {m = _m;}
+        ~SerialTest() {}
+    };
+
+    class SerialTest2: public TestMethod{
+    public:
+        int m;
+
+        void run(std::vector<bool> &bits){
+            serial_test(bits, m);
+            P = serial_test2(bits);
+        }
+
+        const char* testName(int lang = 0){
+            char* names[1] = {"serial test (2)"};
+            return names[lang];
+        }
+
+        SerialTest2(int _m) {m = _m;}
+        ~SerialTest2() {}
+    };
 }

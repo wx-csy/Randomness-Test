@@ -98,4 +98,19 @@ namespace test{
         return P;
     }
 
+    class ApproximateEntropyTest: public TestMethod{
+    public:
+        unsigned int m;
+        void run(std::vector<bool> &bits){
+            P = approximate_entropy_test(bits, m);
+        }
+
+        const char* testName(int lang = 0){
+            char* names[1] = {"approximate entropy test"};
+            return names[lang];
+        }
+
+        ApproximateEntropyTest(unsigned int _m) {m=_m;}
+        ~ApproximateEntropyTest() {}
+    };
 }

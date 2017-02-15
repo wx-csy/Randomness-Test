@@ -1,7 +1,7 @@
 namespace test{
 
     // 仅实现 M=Q=32 的情况
-    double binary_matrix_rank_test(const vector<bool> &bits, int M, int Q){
+    double binary_matrix_rank_test(const vector<bool> &bits, unsigned int M, unsigned int Q){
         if (bits.size()==0 || M!=32 || Q!=32){
             cerr<<"Illegal parameter!"<<endl;
             throw;
@@ -53,5 +53,19 @@ namespace test{
         return P;
     }
 
+    class BinaryMatrixRankTest: public TestMethod{
+    public:
+        unsigned int M, Q;
+        void run(std::vector<bool> &bits){
+            P = binary_matrix_rank_test(bits, M, Q);
+        }
 
+        const char* testName(int lang = 0){
+            char* names[1] = {"binary matrix rank test"};
+            return names[lang];
+        }
+
+        BinaryMatrixRankTest(unsigned int _M, unsigned int _Q) {M=_M; Q=_Q;}
+        ~BinaryMatrixRankTest() {}
+    };
 }

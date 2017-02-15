@@ -29,4 +29,19 @@ namespace test{
         return P;
     }
 
+    class CumulativeTest: public TestMethod{
+    public:
+        void run(std::vector<bool> &bits){
+            P = cumulative_test(bits);
+        }
+
+        const char* testName(int lang = 0){
+            char* names[1] = {"cumulative test"};
+            return names[lang];
+        }
+
+        CumulativeTest() {}
+        ~CumulativeTest() {}
+    };
+
 }

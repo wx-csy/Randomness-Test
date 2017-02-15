@@ -44,4 +44,21 @@ namespace test{
         return P;
     }
 
+    class PokerTest: public TestMethod{
+    public:
+        int m;
+
+        void run(std::vector<bool> &bits){
+            P = poker_test(bits, m);
+        }
+
+        const char* testName(int lang = 0){
+            char* names[1] = {"poker test"};
+            return names[lang];
+        }
+
+        PokerTest(int _m) {m = _m;}
+        ~PokerTest() {}
+    };
+
 }

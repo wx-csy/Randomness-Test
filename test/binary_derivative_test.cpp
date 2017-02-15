@@ -31,4 +31,20 @@ namespace test{
         return P;
     }
 
+    class BinaryDerivativeTest: public TestMethod{
+    public:
+        unsigned int k;
+
+        void run(std::vector<bool> &bits){
+            P = binary_derivative_test(bits, k);
+        }
+
+        const char* testName(int lang = 0){
+            char* names[1] = {"binary derivative test"};
+            return names[lang];
+        }
+
+        BinaryDerivativeTest(unsigned int _k) {k=_k;}
+        ~BinaryDerivativeTest() {}
+    };
 }

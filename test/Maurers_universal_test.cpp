@@ -69,4 +69,19 @@ namespace test{
         return P;
     }
 
+    class MaurersUniversalTest: public TestMethod{
+    public:
+        unsigned int L, Q;
+        void run(std::vector<bool> &bits){
+            P = Maurers_universal_test(bits, L, Q);
+        }
+
+        const char* testName(int lang = 0){
+            char* names[1] = {"Maurer's universal test"};
+            return names[lang];
+        }
+
+        MaurersUniversalTest(unsigned int _L, unsigned int _Q) {L=_L; Q=_Q;}
+        ~MaurersUniversalTest() {}
+    };
 }

@@ -26,4 +26,20 @@ namespace test{
         return P;
     }
 
+    class AutocorrelationTest: public TestMethod{
+    public:
+        unsigned int d;
+        void run(std::vector<bool> &bits){
+            P = autocorrelation_test(bits, d);
+        }
+
+        const char* testName(int lang = 0){
+            char* names[1] = {"autocorrelation test"};
+            return names[lang];
+        }
+
+        AutocorrelationTest(unsigned int _d) {d=_d;}
+        ~AutocorrelationTest() {}
+    };
+
 }
